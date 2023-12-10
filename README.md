@@ -51,11 +51,11 @@ Pour explorer rapidement et exécuter le projet localement, suivez ces étapes :
     ````
 ### Usage
 
-    Pour lancer l'application, utilisez la commande suivante dans votre terminal :
+    *Pour lancer l'application, utilisez la commande suivante dans votre terminal :*
 
-  ```
+  ````bash
     npm start
-    ```
+    ````
 ## Références
 ...
 
