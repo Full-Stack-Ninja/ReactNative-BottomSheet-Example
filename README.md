@@ -61,7 +61,7 @@ Pour explorer rapidement et exécuter le projet localement, suivez ces étapes :
 
 N'hésitez pas à me contacter pour toute question, suggestion ou collaboration !
 
-- LinkedIn: [Votre Nom sur LinkedIn](lien_vers_votre_profil_LinkedIn)
+- LinkedIn: [CHARLOTIN Carlowensky](https://www.linkedin.com/in/carlowensky-charlotin-7917712a1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 - Facebook: [CHARLOTIN Carlowensky](https://www.facebook.com/charlotin.carlowensky)
-- Instagram: [Votre Nom sur Instagram](lien_vers_votre_profil_Instagram)
-- Twitter: [Votre Nom sur Twitter](lien_vers_votre_profil_Twitter)
+- Instagram: [ralotchin](https://instagram.com/ralotchin?igshid=OGQ5ZDc2ODk2ZA==)
+- Twitter: [@Ralotchin_w](https://x.com/Ralotchin_w?s=09)
