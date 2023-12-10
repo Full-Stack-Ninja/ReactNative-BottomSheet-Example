@@ -57,7 +57,10 @@ Pour explorer rapidement et exécuter le projet localement, suivez ces étapes :
     npm start
     ````
 ## Références
-...
+
+- Documentation officielle d'Expo: [https://docs.expo.dev/](https://docs.expo.dev/)
+- Utilisation de TypeScript avec Expo: [https://docs.expo.dev/guides/typescript/](https://docs.expo.dev/guides/typescript/)
+
 
 ## Contact
 ...
