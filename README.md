@@ -7,8 +7,6 @@
   - [Introduction](#introduction)
   - [Captures d'écran](#captures-décran)
   - [Getting Started](#getting-started)
-    - [Installation](#installation)
-    - [Usage](#usage)
   - [Références](#références)
   - [Contact](#contact)
 
