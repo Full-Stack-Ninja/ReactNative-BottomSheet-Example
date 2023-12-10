@@ -1,5 +1,4 @@
 // components/BottomSheet.tsx
-
 import React, { useRef } from 'react';
 import {
   View,
@@ -11,26 +10,28 @@ import {
 } from 'react-native';
 import { BottomSheetProps } from '../types/types';
 
-
-
+// Composant BottomSheet pour afficher un panneau en bas de l'écran avec une animation de glissement
 const BottomSheet: React.FC<BottomSheetProps> = ({ isVisible, onClose, content }) => {
 
+  // Hauteur du panneau en bas de l'écran
   const bottomSheetHeight = Dimensions.get('window').height * 0.8;
+  // Position Y du panneau, animée avec une valeur ref
   const bottomSheetY = useRef(new Animated.Value(isVisible ? 0 : bottomSheetHeight)).current;
 
+  // Gestionnaire de gestes pour le panneau
   const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (_, gestureState) => {
-        if (gestureState.dy < 0) return; // To allow dragging only in the downward direction
+        if (gestureState.dy < 0) return; // Permet de faire glisser uniquement vers le bas
         bottomSheetY.setValue(gestureState.dy);
       },
       onPanResponderRelease: (_, gestureState) => {
         if (gestureState.dy > 50) {
-          // Close the bottom sheet if dragged down by at least 50 units
+          // Ferme le panneau si glissé vers le bas d'au moins 50 unités
           onClose();
         } else {
-          // Reset the bottom sheet position if not dragged enough to close
+          // Réinitialise la position du panneau si la fermeture n'est pas suffisante
           Animated.timing(bottomSheetY, {
             toValue: 0,
             duration: 300,
@@ -41,6 +42,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isVisible, onClose, content }
     })
   ).current;
 
+  // Effet pour animer l'ouverture/fermeture du panneau lorsqu'il est monté/démonté
   React.useEffect(() => {
     Animated.timing(bottomSheetY, {
       toValue: isVisible ? 0 : bottomSheetHeight,
@@ -49,10 +51,12 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isVisible, onClose, content }
     }).start();
   }, [isVisible]);
 
+  // Gestionnaire pour fermer le panneau lorsqu'on appuie sur l'overlay
   const handleOverlayPress = () => {
     onClose();
   };
 
+  // Rendu du composant
   return (
     <>
       {isVisible && (
@@ -76,6 +80,7 @@ const BottomSheet: React.FC<BottomSheetProps> = ({ isVisible, onClose, content }
   );
 };
 
+// Styles pour le composant BottomSheet
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',

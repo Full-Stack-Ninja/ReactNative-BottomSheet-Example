@@ -6,35 +6,23 @@ import BottomSheet from './components/BottomSheet';
 import Selector from './components/Selector';
 
 export default function App() {
-  // État pour contrôler la visibilité du bas de page
+  // State pour gérer la visibilité du BottomSheet, le texte du genre sélectionné,
+  // les favoris sélectionnés et la question actuelle.
   const [bottomSheetVisible, setBottomSheetVisible] = useState(false);
-
-  // État pour stocker le genre sélectionné
-  const [selectedGender, setSelectedGender] = useState<string | null>(null);
-
-  // État pour stocker le texte du genre sélectionné
-  const [selectedGenderText, setSelectedGenderText] = useState<string>('');
-
-  // État pour stocker les favoris sélectionnés
-  const [selectedFavorites, setSelectedFavorites] = useState<string[]>([]);
-
-  // État pour stocker le texte des favoris sélectionnés
-  const [selectedFavoritesText, setSelectedFavoritesText] = useState<string>('');
-
-  // État pour stocker la question actuelle
+  const [selectedGender, setSelectedGender] = useState<string>('');
+  const [selectedFavorites, setSelectedFavorites] = useState<{ [key: string]: boolean }>({});
   const [currentQuestion, setCurrentQuestion] = useState<string | null>(null);
 
-  // Fonction pour définir la question actuelle et afficher le bas de page
+  // Fonction pour afficher le BottomSheet avec une question spécifique.
   const showQuestionBottomSheet = (question: string) => {
     setCurrentQuestion(question);
     setBottomSheetVisible(true);
   };
 
-  // Fonction pour fermer le bas de page
+  // Fonction pour fermer le BottomSheet.
   const closeBottomSheet = () => {
     setBottomSheetVisible(false);
   };
-
 
   return (
     <View style={styles.container}>
@@ -42,37 +30,55 @@ export default function App() {
       <Pressable onPress={() => showQuestionBottomSheet('Sélectionnez votre sexe:')}>
         <Text style={styles.button}>Show Radio Selector</Text>
       </Pressable>
-      <Text>{selectedGenderText}</Text>
 
       {/* Bouton pour afficher le sélecteur de cases à cocher */}
       <Pressable onPress={() => showQuestionBottomSheet('Sélectionner vos favoris:')}>
         <Text style={styles.button}>Show Checkbox Selector</Text>
       </Pressable>
-      <Text>{selectedFavoritesText}</Text>
 
-      {/* Afficher le composant BottomSheet si bottomSheetVisible est vrai */}
+      <View>
+        {/* Affichage du texte du genre sélectionné */}
+        {selectedGender && <Text> - Votre sexe est : {selectedGender}</Text>}
+
+        {/* Affichage des favoris sélectionnés */}
+        {Object.keys(selectedFavorites).length > 0 && (
+          <Text> - Vos favoris sont : {Object.keys(selectedFavorites).join(', ')}</Text>
+        )}
+      </View>
+
+      {/* Affichage du BottomSheet si visible */}
       {bottomSheetVisible && (
         <BottomSheet
           isVisible={bottomSheetVisible}
           onClose={closeBottomSheet}
           content={
             <>
+              {/* Affichage de la question actuelle */}
               <Text style={styles.currentQuestion}>{currentQuestion}</Text>
-              {/* Utiliser le composant Selector en fonction de la question actuelle */}
+
+              {/* Sélecteur de radio pour la question du genre */}
               {currentQuestion === 'Sélectionnez votre sexe:' && (
                 <Selector
                   options={['Homme', 'Femme', 'Non précisé']}
+                  defaultSelected={[selectedGender]}
                   onSelect={(selectedOption) => {
-                    console.log(selectedOption);
+                    setSelectedGender(selectedOption[0] || '');
                   }}
                   type="radio"
                 />
               )}
+
+              {/* Sélecteur de cases à cocher pour la question des favoris */}
               {currentQuestion === 'Sélectionner vos favoris:' && (
                 <Selector
-                  options={['Intelligence Artificielle (IA)', 'Machine Learning (ML)', 'Sécurité informatique','Développement Web Full Stack']}
+                  options={['Intelligence Artificielle (IA)', 'Machine Learning (ML)', 'Sécurité informatique', 'Développement Web Full Stack']}
+                  defaultSelected={Object.keys(selectedFavorites)}
                   onSelect={(selectedOptions) => {
-                    console.log(selectedOptions);
+                    const newFavorites: { [key: string]: boolean } = {};
+                    (selectedOptions as string[]).forEach((option: string) => {
+                      newFavorites[option] = true;
+                    });
+                    setSelectedFavorites(newFavorites);
                   }}
                   type="checkbox"
                 />
@@ -85,6 +91,7 @@ export default function App() {
   );
 }
 
+// Styles du composant
 const styles = StyleSheet.create({
   container: {
     flex: 1,

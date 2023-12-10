@@ -1,69 +1,89 @@
 // components/Selector.tsx
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
+import Icon from './Icon';
 import { SelectorProps } from '../types/types';
 
-// Définit le type des options dans le composant Selector
 type OptionType = string;
 
-const Selector: React.FC<SelectorProps<OptionType>> = ({ options, onSelect, type }) => {
-  const [selectedOptions, setSelectedOptions] = useState<OptionType[]>([]);
+// Composant Selector qui fournit une interface de sélection personnalisable (radio ou checkbox)
+const Selector: React.FC<SelectorProps<OptionType>> = ({ options, onSelect, type, defaultSelected }) => {
+  // État pour gérer les options sélectionnées
+  const [selectedOptions, setSelectedOptions] = useState<OptionType[]>(defaultSelected || []);
 
+  // Fonction pour gérer les changements d'option en fonction du type de sélection (radio ou checkbox)
   const handleOptionChange = (option: OptionType) => {
-    let updatedOptions: OptionType[];
-
-    if (type === 'radio') {
-      updatedOptions = [option];
-    } else {
-      updatedOptions = selectedOptions.includes(option)
+    // Détermine les options mises à jour en fonction du type de sélection
+    const updatedOptions =
+      type === 'radio'
+        ? [option] // Pour radio, une seule option peut être sélectionnée à la fois
+        : selectedOptions.includes(option)
         ? selectedOptions.filter((selectedOption) => selectedOption !== option)
         : [...selectedOptions, option];
-    }
 
+    // Met à jour l'état avec les nouvelles options sélectionnées
     setSelectedOptions(updatedOptions);
+    
+    // Notifie le composant parent des sélections mises à jour
     onSelect(updatedOptions);
   };
 
+  // Effet pour initialiser les options sélectionnées lorsque la prop defaultSelected change
+  useEffect(() => {
+    if (defaultSelected) {
+      setSelectedOptions(defaultSelected);
+    }
+  }, [defaultSelected]);
+
+  // Rendu de l'interface du sélecteur
   return (
     <View style={styles.container}>
+      {/* Parcours des options pour créer des composants Pressable */}
       {options.map((option) => (
-        <TouchableOpacity key={option.toString()} onPress={() => handleOptionChange(option)}>
+        <Pressable
+          key={option.toString()}
+          onPress={() => handleOptionChange(option)}
+          style={({ pressed }) => [
+            styles.pressable,
+            pressed && styles.pressablePressed,
+          ]}
+        >
+          {/* Affiche l'option avec une icône et du texte */}
           <View style={styles.optionContainer}>
-            <Ionicons
-              name={type === 'radio' ? (selectedOptions.includes(option) ? 'checkbox-outline' : 'square-outline') : 'checkbox-outline'}
-              size={24}
-              color={selectedOptions.includes(option) ? 'blue' : 'black'}
-              style={styles.icon}
-            />
+            <Icon type={type} checked={selectedOptions.includes(option)} />
             <Text style={[styles.optionText, selectedOptions.includes(option) && styles.selectedText]}>
               {option.toString()}
             </Text>
           </View>
-        </TouchableOpacity>
+        </Pressable>
       ))}
     </View>
   );
 };
 
+// Styles pour le composant Selector
 const styles = StyleSheet.create({
   container: {
     marginTop: 10,
   },
+  pressable: {
+    opacity: 1,
+    padding: 8,
+  },
+  pressablePressed: {
+    opacity: 0.5,
+  },
   optionContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 8,
-  },
-  icon: {
-    marginRight: 10,
   },
   optionText: {
     fontSize: 16,
     color: 'black',
+    marginLeft: 8,
   },
   selectedText: {
-    fontWeight: 'bold', // Style du texte sélectionné
+    fontWeight: 'bold',
   },
 });
 
