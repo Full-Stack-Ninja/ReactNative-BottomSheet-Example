@@ -62,6 +62,6 @@ Pour explorer rapidement et exécuter le projet localement, suivez ces étapes :
 N'hésitez pas à me contacter pour toute question, suggestion ou collaboration !
 
 - LinkedIn: [Votre Nom sur LinkedIn](lien_vers_votre_profil_LinkedIn)
-- Facebook: [Votre Nom sur Facebook](lien_vers_votre_profil_Facebook)
+- Facebook: [CHARLOTIN Carlowensky](https://www.facebook.com/charlotin.carlowensky)
 - Instagram: [Votre Nom sur Instagram](lien_vers_votre_profil_Instagram)
 - Twitter: [Votre Nom sur Twitter](lien_vers_votre_profil_Twitter)
