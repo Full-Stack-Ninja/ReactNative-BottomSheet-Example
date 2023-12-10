@@ -28,8 +28,6 @@ Bottom-sheet avec liste sélectionnable (Case à cocher)
 
 ## Getting Started
 
-### Installation
-
 Pour explorer rapidement et exécuter le projet localement, suivez ces étapes :
 
 1. Commencez par installer Node.js sur votre machine. Téléchargez-le depuis [le site officiel de Node.js](https://nodejs.org/).
@@ -44,18 +42,17 @@ Pour explorer rapidement et exécuter le projet localement, suivez ces étapes :
    ```bash
     cd ReactNative-BottomSheet-Example
     ```
-4. npm install
+4. Installez les dépendances nécessaires avec :
 
     ```bash
     npm install
     ````
-### Usage
+5. Pour lancer l'application, utilisez la commande suivante dans votre terminal :
 
-    *Pour lancer l'application, utilisez la commande suivante dans votre terminal :*
-
-  ````bash
+   ```bash
     npm start
     ````
+
 ## Références
 
 - Documentation officielle d'Expo: [https://docs.expo.dev/](https://docs.expo.dev/)
