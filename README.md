@@ -1,6 +1,7 @@
 # ReactNative-BottomSheet-Example
 
 ## Table des Matières
+
 - [ReactNative-BottomSheet-Example](#reactnative-bottomsheet-example)
   - [Table des Matières](#table-des-matières)
   - [Introduction](#introduction)
@@ -8,25 +9,53 @@
   - [Getting Started](#getting-started)
     - [Installation](#installation)
     - [Usage](#usage)
+  - [Références](#références)
   - [Contact](#contact)
 
 ## Introduction
 
-Ce projet React Native démontre comment mettre en œuvre un 'bottom-sheet' contenant un composant de sélection. Le 'bottom-sheet' est utilisé pour afficher des options sélectionnables d'une manière élégante, améliorant ainsi l'expérience utilisateur. En bonus, nous avons ajouté un composant sélecteur pour offrir encore plus de fonctionnalités et de convivialité.
+Bienvenue dans mon projet React Native, une expérience immersive développée avec Expo et alimentée par TypeScript ! Plongez-vous dans la magie du développement mobile en explorant mon exemple de 'bottom-sheet' élégant, conçu pour rendre vos sélections plus intuitives et agréables.
+
+Que vous soyez un développeur chevronné ou que vous découvriez le monde captivant de React Native, mon projet vous guide à travers la mise en œuvre d'un 'bottom-sheet' interactif. Découvrez comment améliorer l'expérience utilisateur en affichant des options sélectionnables de manière visuellement attrayante.
 
 ## Captures d'écran
 ![Image 1](./assets/image/preview-1.jpg)
-*Description de l'image 1*
+
+Bottom-sheet avec liste sélectionnable (Bouton radio)
 
 ![Image 2](./assets/image/preview-2.jpg)
-*Description de l'image 2*
+Bottom-sheet avec liste sélectionnable (Case à cocher)
 
 ## Getting Started
 
 ### Installation
-...
 
+Pour explorer rapidement et exécuter le projet localement, suivez ces étapes :
+
+1. Commencez par installer Node.js sur votre machine. Téléchargez-le depuis [le site officiel de Node.js](https://nodejs.org/).
+
+2. Clonez le projet à l'aide de la commande :
+   
+   ```bash
+   git clone https://github.com/Full-Stack-Ninja/ReactNative-BottomSheet-Example.git
+    ```
+3. Accédez au répertoire du projet :
+   
+   ```bash
+    cd ReactNative-BottomSheet-Example
+    ```
+4. npm install
+
+    ```bash
+    npm install
+    ```
 ### Usage
+    Lancez l'application en utilisant la commande :
+
+    ```bash
+    npm start
+    ```
+## Références
 ...
 
 ## Contact
