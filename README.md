@@ -53,8 +53,8 @@ Pour explorer rapidement et exécuter le projet localement, suivez ces étapes :
 
     Pour lancer l'application, utilisez la commande suivante dans votre terminal :
 
-    ```bash
-    npm install
+  ```
+    npm start
     ```
 ## Références
 ...
